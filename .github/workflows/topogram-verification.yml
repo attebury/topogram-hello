@@ -1,0 +1,41 @@
+name: Topogram Package Verification
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  verify:
+    name: Package smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/checkout@v6
+        with:
+          repository: attebury/topogram
+          ref: topogram-v0.2.22
+          path: topogram-source
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+      - name: Pack Topogram CLI from source
+        id: topogram_cli
+        run: |
+          npm --prefix ./topogram-source/engine ci
+          mkdir -p "$RUNNER_TEMP/topogram-cli"
+          PACK_NAME="$(cd ./topogram-source/engine && npm pack --silent --pack-destination "$RUNNER_TEMP/topogram-cli" | tail -n 1)"
+          echo "tarball=$RUNNER_TEMP/topogram-cli/$PACK_NAME" >> "$GITHUB_OUTPUT"
+      - name: Verify package
+        env:
+          TOPOGRAM_CLI_PACKAGE_SPEC: ${{ steps.topogram_cli.outputs.tarball }}
+        run: npm run pack:check
