@@ -4,7 +4,7 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 WORK_ROOT="$ROOT_DIR/.tmp/topogram-package"
 NPM_CACHE_DIR="$ROOT_DIR/.tmp/npm-cache"
-CLI_PACKAGE_SPEC="${TOPOGRAM_CLI_PACKAGE_SPEC:-@attebury/topogram@0.2.22}"
+CLI_PACKAGE_SPEC="${TOPOGRAM_CLI_PACKAGE_SPEC:-@attebury/topogram@0.3.19}"
 
 if [[ -d "$ROOT_DIR/implementation" ]]; then
   echo "Pure topogram packages must not contain implementation/." >&2
