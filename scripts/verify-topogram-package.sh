@@ -4,7 +4,17 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 WORK_ROOT="$ROOT_DIR/.tmp/topogram-package"
 NPM_CACHE_DIR="$ROOT_DIR/.tmp/npm-cache"
-CLI_PACKAGE_SPEC="${TOPOGRAM_CLI_PACKAGE_SPEC:-@attebury/topogram@0.3.19}"
+default_cli_package_spec() {
+  local version
+  version="$(cat "$ROOT_DIR/topogram-cli.version")"
+  if [[ -z "$version" ]]; then
+    echo "topogram-cli.version must contain the Topogram CLI version used by package verification." >&2
+    exit 1
+  fi
+  echo "@attebury/topogram@$version"
+}
+
+CLI_PACKAGE_SPEC="${TOPOGRAM_CLI_PACKAGE_SPEC:-$(default_cli_package_spec)}"
 
 if [[ -d "$ROOT_DIR/implementation" ]]; then
   echo "Pure topogram packages must not contain implementation/." >&2
