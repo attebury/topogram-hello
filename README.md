@@ -17,9 +17,13 @@ It intentionally does not contain executable `implementation/` code.
 After the catalog entry is available:
 
 ```bash
-topogram catalog copy hello ./hello-topogram
+npm install --save-dev @topogram/cli
+npx topogram doctor
+npx topogram catalog show hello
+npx topogram catalog copy hello ./hello-topogram
 cd ./hello-topogram
-topogram check
+npx topogram source status --local
+npx topogram check
 ```
 
 The copied project is editable Topogram source. It can later be generated with a
