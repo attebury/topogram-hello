@@ -31,6 +31,9 @@ template or maintained by an agent/human workflow.
 npm run pack:check
 ```
 
+See [`CONSUMER_PROOF.md`](./CONSUMER_PROOF.md) for the verification standard
+this repo must keep before publishing the pure topogram package.
+
 The package smoke verifies that the packed package contains no `implementation/`
 directory, validates the Topogram project, and exercises `topogram catalog copy`
 with a local catalog fixture.
