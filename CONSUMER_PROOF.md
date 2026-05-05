@@ -22,5 +22,5 @@ The check must:
 
 - Adding executable implementation to a pure topogram package.
 - File-existence-only proof without `topogram check`.
-- Stale hard-coded `@attebury/topogram@x.y.z` literals instead of
+- Stale hard-coded `@topogram/cli@x.y.z` literals instead of
   `topogram-cli.version`.

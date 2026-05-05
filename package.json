@@ -1,6 +1,6 @@
 {
-  "name": "@attebury/topogram-hello",
-  "version": "0.1.0",
+  "name": "@topogram/topogram-hello",
+  "version": "0.1.1",
   "description": "Pure Topogram package for the neutral Hello/Greeting resource.",
   "license": "UNLICENSED",
   "private": false,
@@ -11,7 +11,8 @@
     "README.md"
   ],
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
   },
   "scripts": {
     "pack:check": "bash ./scripts/verify-topogram-package.sh"

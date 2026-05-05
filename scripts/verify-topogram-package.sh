@@ -11,7 +11,7 @@ default_cli_package_spec() {
     echo "topogram-cli.version must contain the Topogram CLI version used by package verification." >&2
     exit 1
   fi
-  echo "@attebury/topogram@$version"
+  echo "@topogram/cli@$version"
 }
 
 CLI_PACKAGE_SPEC="${TOPOGRAM_CLI_PACKAGE_SPEC:-$(default_cli_package_spec)}"
@@ -33,7 +33,7 @@ CATALOG_FILE="$RUN_DIR/topograms.catalog.json"
 COPY_TARGET="$RUN_DIR/copied-hello"
 mkdir -p "$PACK_DIR" "$UNPACK_DIR" "$CONSUMER_DIR" "$FAKE_BIN_DIR"
 
-echo "Packing @attebury/topogram-hello..."
+echo "Packing @topogram/topogram-hello..."
 PACK_NAME="$(cd "$ROOT_DIR" && npm pack --silent --pack-destination "$PACK_DIR" | tail -n 1)"
 PACKAGE_TARBALL="$PACK_DIR/$PACK_NAME"
 
@@ -65,12 +65,12 @@ cat > "$CATALOG_FILE" <<'JSON'
     {
       "id": "hello",
       "kind": "topogram",
-      "package": "@attebury/topogram-hello",
-      "defaultVersion": "0.1.0",
+      "package": "@topogram/topogram-hello",
+      "defaultVersion": "0.1.1",
       "description": "Neutral Hello/Greeting Topogram package.",
       "tags": ["hello", "greeting", "topogram"],
       "trust": {
-        "scope": "@attebury",
+        "scope": "@topogram",
         "includesExecutableImplementation": false
       }
     }
@@ -97,7 +97,7 @@ function packageNameFromSpec(spec) {
 if (args[0] === "install") {
   const prefix = args[args.indexOf("--prefix") + 1];
   const spec = args[args.length - 1];
-  if (spec !== "@attebury/topogram-hello@0.1.0") {
+  if (spec !== "@topogram/topogram-hello@0.1.1") {
     process.stderr.write(`Unexpected fake npm install spec: ${spec}\n`);
     process.exit(1);
   }
@@ -115,14 +115,10 @@ chmod +x "$FAKE_BIN_DIR/npm"
 
 echo "Installing Topogram CLI ($CLI_PACKAGE_SPEC) into a consumer project..."
 (
-  cd "$CONSUMER_DIR"
-  npm init -y >/dev/null
-  npm config set @attebury:registry https://npm.pkg.github.com --location=project
-  if [[ -n "${NODE_AUTH_TOKEN:-}" ]]; then
-    npm config set //npm.pkg.github.com/:_authToken "$NODE_AUTH_TOKEN" --location=project
-  fi
-  npm install "$CLI_PACKAGE_SPEC" >/dev/null
-)
+	  cd "$CONSUMER_DIR"
+	  npm init -y >/dev/null
+	  npm install "$CLI_PACKAGE_SPEC" >/dev/null
+	)
 
 TOPOGRAM_BIN="$CONSUMER_DIR/node_modules/.bin/topogram"
 if [[ ! -x "$TOPOGRAM_BIN" ]]; then
