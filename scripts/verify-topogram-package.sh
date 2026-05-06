@@ -42,8 +42,8 @@ if [[ ! -f "$PACKAGE_TARBALL" ]]; then
   exit 1
 fi
 
-if tar -tzf "$PACKAGE_TARBALL" | awk -F/ '{ print $NF }' | grep -E '^\.env' >/tmp/topogram-hello-env-files.$$; then
-  echo "Topogram package must not publish .env* files:" >&2
+if tar -tzf "$PACKAGE_TARBALL" | awk -F/ '{ print $NF }' | grep -E '^(\.env.*|\.npmrc|\.DS_Store|.*\.(pem|key)|id_rsa|secrets\..*|credentials\..*)$' >/tmp/topogram-hello-env-files.$$; then
+  echo "Topogram package must not publish restricted local or secret files:" >&2
   cat /tmp/topogram-hello-env-files.$$ >&2
   rm -f /tmp/topogram-hello-env-files.$$
   exit 1
