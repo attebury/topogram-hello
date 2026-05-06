@@ -22,6 +22,6 @@
     "pack:check": "bash ./scripts/verify-topogram-package.sh"
   },
   "devDependencies": {
-    "@topogram/cli": "^0.3.39"
+    "@topogram/cli": "^0.3.40"
   }
 }
