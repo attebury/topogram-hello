@@ -5,6 +5,10 @@
   "license": "UNLICENSED",
   "private": false,
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/attebury/topogram-hello"
+  },
   "files": [
     "topogram",
     "topogram.project.json",

@@ -51,6 +51,8 @@ jobs:
           TOPOGRAM_CLI_VERSION="$(cat topogram-cli.version)"
           TOPOGRAM_CLI_PACKAGE_SPEC="@topogram/cli@$TOPOGRAM_CLI_VERSION" npm run pack:check
       - name: Publish package
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm publish --provenance --access public --tag "${{ inputs.dist_tag }}"
       - name: Create release tag
         if: ${{ inputs.create_tag }}
