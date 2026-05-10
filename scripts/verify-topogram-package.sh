@@ -57,8 +57,8 @@ if [[ -d "$PACKAGE_ROOT/implementation" ]]; then
   echo "Packed package must not contain implementation/." >&2
   exit 1
 fi
-if [[ ! -d "$PACKAGE_ROOT/topogram" ]]; then
-  echo "Packed package is missing topogram/." >&2
+if [[ ! -d "$PACKAGE_ROOT/topo" ]]; then
+  echo "Packed package is missing topo/." >&2
   exit 1
 fi
 if [[ ! -f "$PACKAGE_ROOT/topogram.project.json" ]]; then
@@ -74,7 +74,7 @@ cat > "$CATALOG_FILE" <<'JSON'
       "id": "hello",
       "kind": "topogram",
       "package": "@topogram/topogram-hello",
-      "defaultVersion": "0.1.1",
+      "defaultVersion": "0.1.3",
       "description": "Neutral Hello/Greeting Topogram package.",
       "tags": ["hello", "greeting", "topogram"],
       "trust": {
@@ -105,7 +105,7 @@ function packageNameFromSpec(spec) {
 if (args[0] === "install") {
   const prefix = args[args.indexOf("--prefix") + 1];
   const spec = args[args.length - 1];
-  if (spec !== "@topogram/topogram-hello@0.1.1") {
+  if (spec !== "@topogram/topogram-hello@0.1.3") {
     process.stderr.write(`Unexpected fake npm install spec: ${spec}\n`);
     process.exit(1);
   }
@@ -145,8 +145,8 @@ PATH="$FAKE_BIN_DIR:$PATH" \
 FAKE_TOPOGRAM_HELLO_PACKAGE_ROOT="$PACKAGE_ROOT" \
   "$TOPOGRAM_BIN" catalog copy hello "$COPY_TARGET" --catalog "$CATALOG_FILE" >/dev/null
 
-if [[ ! -d "$COPY_TARGET/topogram" ]]; then
-  echo "Expected copied topogram/ directory." >&2
+if [[ ! -d "$COPY_TARGET/topo" ]]; then
+  echo "Expected copied topo/ directory." >&2
   exit 1
 fi
 if [[ ! -f "$COPY_TARGET/topogram.project.json" ]]; then

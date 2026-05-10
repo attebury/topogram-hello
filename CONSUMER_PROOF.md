@@ -13,7 +13,7 @@ The check must:
 
 - install the Topogram CLI package pinned in `topogram-cli.version`;
 - pack the topogram package;
-- prove the tarball contains `topogram/` and `topogram.project.json`;
+- prove the tarball contains `topo/` and `topogram.project.json`;
 - prove the tarball does not contain `implementation/`;
 - run catalog-copy verification with a local catalog fixture;
 - run `topogram check` on the copied topogram.

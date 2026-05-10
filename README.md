@@ -5,7 +5,7 @@ Pure Topogram package for the neutral Hello/Greeting resource.
 This package is for `topogram catalog copy`, not `topogram new`. It contains:
 
 ```text
-topogram/
+topo/
 topogram.project.json
 README.md
 ```
