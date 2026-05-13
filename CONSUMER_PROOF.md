@@ -1,6 +1,6 @@
 # Consumer Proof
 
-This repo publishes a pure topogram package for `topogram catalog copy`. It is
+This repo publishes a pure topogram package for `topogram copy`. It is
 not a template and must not contain executable implementation code.
 
 ## Required Gate

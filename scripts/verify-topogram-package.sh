@@ -143,7 +143,7 @@ echo "Checking local catalog fixture..."
 echo "Copying topogram package through catalog..."
 PATH="$FAKE_BIN_DIR:$PATH" \
 FAKE_TOPOGRAM_HELLO_PACKAGE_ROOT="$PACKAGE_ROOT" \
-  "$TOPOGRAM_BIN" catalog copy hello "$COPY_TARGET" --catalog "$CATALOG_FILE" >/dev/null
+  "$TOPOGRAM_BIN" copy hello "$COPY_TARGET" --catalog "$CATALOG_FILE" >/dev/null
 
 if [[ ! -d "$COPY_TARGET/topo" ]]; then
   echo "Expected copied topo/ directory." >&2
