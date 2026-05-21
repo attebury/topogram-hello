@@ -1,10 +1,10 @@
-projection proj_ui_contract {
+surface proj_ui_contract {
   name "Starter Shared UI"
   description "Platform-neutral UI semantics for the neutral starter"
-  type ui_contract
+  type semantic_ui
 
   realizes [cap_list_greetings, cap_get_greeting, cap_create_greeting, cap_update_greeting]
-  outputs [ui_contract]
+  outputs [semantic_ui]
 
   app_shell {
     brand "Topogram Starter"

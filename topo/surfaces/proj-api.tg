@@ -1,7 +1,7 @@
-projection proj_api {
+surface proj_api {
   name "Starter API"
   description "HTTP API realization for the neutral starter"
-  type api_contract
+  type api
 
   realizes [cap_create_greeting, cap_get_greeting, cap_list_greetings, cap_update_greeting]
   outputs [database_schema, entity_models, request_contracts, response_contracts, endpoints]

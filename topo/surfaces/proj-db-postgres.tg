@@ -1,10 +1,10 @@
-projection proj_db_postgres {
+surface proj_db_postgres {
   name "Starter Postgres DB"
   description "Postgres persistence realization for the neutral starter"
-  type db_contract
+  type db
 
   realizes [entity_greeting]
-  outputs [db_contract, sql_schema]
+  outputs [db, sql_schema]
 
   tables {
     entity_greeting table greetings

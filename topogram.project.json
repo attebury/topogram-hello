@@ -12,7 +12,7 @@
       {
         "id": "app_api",
         "kind": "api_service",
-        "projection": "proj_api",
+        "surface": "proj_api",
         "generator": {
           "id": "topogram/hono",
           "version": "1"
@@ -22,8 +22,8 @@
       },
       {
         "id": "app_sveltekit",
-        "kind": "web_surface",
-        "projection": "proj_web_surface",
+        "kind": "web",
+        "surface": "proj_web_surface",
         "generator": {
           "id": "topogram/sveltekit",
           "version": "1"
@@ -34,7 +34,7 @@
       {
         "id": "app_postgres",
         "kind": "database",
-        "projection": "proj_db_postgres",
+        "surface": "proj_db_postgres",
         "generator": {
           "id": "topogram/postgres",
           "version": "1"
